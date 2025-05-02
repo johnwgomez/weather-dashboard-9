@@ -4,16 +4,21 @@ dotenv.config();
 
 // Import the routes
 import routes from './routes/index.js';
+import path from 'path';
+import cors from 'cors';
 
 const app = express();
 
 const PORT = process.env.PORT || 3001;
 
 // TODO: Serve static files of entire client dist folder
-
+const clientDist = path.join(__dirname, '../../client/dist')
+app.use(express.static(clientDist))
 // TODO: Implement middleware for parsing JSON and urlencoded form data
-
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 // TODO: Implement middleware to connect the routes
+app.use(cors())
 app.use(routes);
 
 // Start the server on the port
