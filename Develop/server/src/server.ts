@@ -6,7 +6,12 @@ dotenv.config();
 import routes from './routes/index.js';
 import path from 'path';
 import cors from 'cors';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
+// Create __dirname in ES module scope
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express();
 
 const PORT = process.env.PORT || 3001;
