@@ -7,7 +7,7 @@ dotenv.config();
 
 // TODO: Complete the WeatherService class
 class WeatherService {
-  getWeatherForCity(city: any) {
+  getWeatherForCity(_city: any) {
     throw new Error('Method not implemented.');
   }
   // TODO: Define the baseURL, API key, and city name properties
