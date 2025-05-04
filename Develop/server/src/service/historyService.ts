@@ -12,8 +12,16 @@ class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
   private async read(): Promise<City[]> {
     const filePath = path.join(process.cwd(), 'searchHistory.json');
-    const data = await fs.readFile(filePath, 'utf-8');
-    return JSON.parse(data) as City[];
+    try {
+      const data = await fs.readFile(filePath, 'utf-8');
+      return JSON.parse(data) as City[];
+    } catch (err: any) {
+      if (err.code === 'ENOENT') {
+        // File does not exist yet; return empty history
+        return [];
+      }
+      throw err;
+    }
   }
 
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
