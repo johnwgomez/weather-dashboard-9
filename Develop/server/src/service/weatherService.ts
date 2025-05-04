@@ -51,7 +51,12 @@ class WeatherService {
 
   // TODO: Create buildWeatherQuery method
   private buildWeatherQuery(coords: Coordinates): string {
-    return `${this.weatherBaseURL}?lat=${coords.lat}&lon=${coords.lon}&appid=${this.apiKey}`;
+    // include units=imperial for Fahrenheit
+    return `${this.weatherBaseURL}` +
+           `?lat=${coords.lat}` +
+           `&lon=${coords.lon}` +
+           `&units=imperial` +
+           `&appid=${this.apiKey}`;
   }
 
   // TODO: Create fetchWeatherData method
